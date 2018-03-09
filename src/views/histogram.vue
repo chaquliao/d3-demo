@@ -90,13 +90,12 @@ export default {
         .attr("fill", function(d) {
           return d.fill
         })
-        // .on("click", function(d, i) {
-        //   console.log(d, i)
-        //   d.fill = d.fill === "steelblue" ? "gray" : "steelblue";
-        //   //bar_width = svg_width / data.length - bar_padding;
-        //   svg.remove()
-        //   rep();
-        // })
+        .on("click", function(d, i) {
+          d3.select(this)
+            .transition()
+            .duration(5000)
+            .attr("fill", "#000")
+        })
         .on("mouseover", function(d) {
           return tooltip.style("display", "block");
         })
@@ -112,9 +111,8 @@ export default {
         .attr("height", function(d) {
           return svg_height - scale_y(d.value)
         })
-        
-      var x_axis = d3.axisBottom(scale_x)
-        .ticks(data.length),
+
+      var x_axis = d3.axisBottom(scale_x),
         y_axis = d3.axisRight(scale_y)
         .tickSize(svg_width);
 

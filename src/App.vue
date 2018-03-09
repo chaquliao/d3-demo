@@ -7,6 +7,7 @@
       <p class="nav-list">
         <router-link class="nav-item" to="/">lineChart</router-link>
         <router-link class="nav-item" to="/histogram">histogram</router-link>
+        <router-link class="nav-item" to="/pieChart">pieChart</router-link>
       </p>
     </div>
     <div>

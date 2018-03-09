@@ -84,7 +84,8 @@ export default {
         .attr("d", area_generator(data))
         .style("fill", "steelblue");
 
-      var x_axis = d3.axisBottom(scale_x),
+      var x_axis = d3.axisBottom(scale_x)
+        .ticks(data.length),
         y_axis = d3.axisLeft(scale_y);
 
       g.append("g")
