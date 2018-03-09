@@ -1,5 +1,8 @@
 <template>
-  <div id="container"></div>
+  <div>
+    <div id="container"></div>
+    <div id="container2"></div>
+  </div>
 </template>
 <script>
 import * as d3 from "d3";
@@ -16,7 +19,7 @@ export default {
         data = [{
           value: 1,
           label: "rass",
-          fill: "steelblue"
+          fill: "#EEEE00"
         }, {
           value: 5,
           label: "core",
@@ -55,7 +58,11 @@ export default {
         .innerRadius(innerRadius) //设置内半径
         .outerRadius(outerRadius); //设置外半径
 
-      // var color = d3.scale.category20();
+      var tooltip = d3.select("#container2")
+        .append("div")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("display", "none")
 
       var svg = d3.select("#container")
         .append("svg")
@@ -69,16 +76,45 @@ export default {
         .attr("transform", `translate(${svg_width/2},${svg_height/2})`)
 
       arcs.append("path")
-        .attr("fill", function(d,i){
-        	return fills[i]
+        .attr("fill", function(d, i) {
+          return fills[i]
         })
         .attr("d", function(d) {
           return arc(d);
+        })
+        .on("mouseover", function(d) {
+          return tooltip.style("display", "block");
+        })
+        .on("mousemove", function(d) {
+          return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px")
+            .html(`<div class="tooltip-container">data is ${d.value}</div>`)
+            .style("display", "block");
+        })
+        .on("mouseout", function(d) {
+          return tooltip.style("display", "none");
         });
-
-
-
     }
   }
 }
 </script>
+<style>
+.tooltip-container {
+  width: 130px;
+  height: 50px;
+  background: white;
+  margin-left: 5px;
+  border: 1px solid black;
+  border-radius: 4px
+}
+
+.tooltip-container:before {
+  content: '';
+  display: block;
+  position: absolute;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  top: 10px;
+  left: -5px;
+  border-right: 10px solid #333333;
+}
+</style>
