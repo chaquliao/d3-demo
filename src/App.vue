@@ -56,6 +56,7 @@ li {
 }
 
 a {
+  font-weight: 300;
   color: #42b983;
   font-size: 24px;
 }
