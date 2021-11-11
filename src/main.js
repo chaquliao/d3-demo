@@ -9,6 +9,6 @@ Vue.config.debug = true; //开启错误提示
 
 new Vue({
   router,
-  el: '#appIndex',
+  el: '#appIndex1',
   render: h => h(App)
 })
