@@ -10,6 +10,8 @@ Vue.config.debug = 'fix 1'; //开启错误提示
 
 new Vue({
   router,
-  el: '#appIndex',
+  el: '#appIndex - 1',
   render: h => h(App)
 })
+
+const name = 'liaofang'
