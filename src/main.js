@@ -5,7 +5,8 @@ import router from './routes.js'
 
 import './assets/styles/base.css'
 //import './assets/sass/reset.sass'//报错暂时不用sass
-Vue.config.debug = 4; //开启错误提示
+const test = 'f 1'
+Vue.config.debug = 'f 1'; //开启错误提示
 
 new Vue({
   router,
